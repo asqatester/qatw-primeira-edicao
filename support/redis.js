@@ -28,7 +28,7 @@ export const getJob = async () => {
 
 //lembrar que precisa do await pq ambas as funções resolvem promessas
 export const cleanJobs = async () => {
-   await queue.obliterate() //função que limpa a fila do redis, a fila toFactorcode
+   await queue.obliterate({force:true}) //função que limpa a fila do redis, a fila toFactorcode
 }
 
 

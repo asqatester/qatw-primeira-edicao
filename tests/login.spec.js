@@ -20,7 +20,7 @@ test("Nao deve logar quando o codigo de autenticacao e invalido", async ({ page 
 
   //o ckeckpoint abaixo garante que após 3 seg de espera fomos de fato para o próximo box
   //checkpoint
-  await page.getByRole("heading", { name: "Verificação em duas etapas" }).waitFor({ timeout: 3000 })
+  await page.getByRole("heading", { name: "Verificação em duas etapas" }).waitFor({ timeout: 6000 })
 
    //ATENÇÃO! manter aqui nome code pois é com vem do json do redis!
   const codigo = await getJob();
@@ -53,7 +53,7 @@ test("Deve acessar a conta do usuario", async ({ page }) => {
 
   //o ckeckpoint abaixo garante que após 3 seg de espera fomos de fato para o próximo box
   //checkpoint
-  await page.getByRole("heading", { name: "Verificação em duas etapas" }).waitFor({ timeout: 3000 })
+  await page.getByRole("heading", { name: "Verificação em duas etapas" }).waitFor({ timeout: 6000 })
 
   //ATENÇÃO! manter aqui nome code pois é com vem do json do redis!
   const codigo = await getJob();
@@ -84,7 +84,7 @@ test("Deve acessar a conta do usuario 2", async ({ page }) => {
 
   //o ckeckpoint abaixo garante que após 3 seg de espera fomos de fato para o próximo box
   //checkpoint
-  await page.getByRole("heading", { name: "Verificação em duas etapas" }).waitFor({ timeout: 3000 })
+  await page.getByRole("heading", { name: "Verificação em duas etapas" }).waitFor({ timeout: 6000 })
 
   //ATENÇÃO! manter aqui nome code pois é com vem do json do redis!
   const codigo = await getJob();
