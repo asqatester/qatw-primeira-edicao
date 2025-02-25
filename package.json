@@ -20,6 +20,8 @@
     "@types/node": "^22.13.4"
   },
   "dependencies": {
+    "allure-commandline": "^2.32.2",
+    "allure-playwright": "^3.2.0",
     "bullmq": "^5.41.5",
     "pg-promise": "^11.10.2",
     "qatw-primeira-edicao": "file:"
