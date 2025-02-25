@@ -89,9 +89,9 @@ services:
     environment:
       - REDIS_HOST=paybank-redis                             # Host do Redis
       - REDIS_PORT=6379                                      # Porta do Redis
-      - MAILTRAP_ACCOUNT_ID=3365587                          # ID da conta do Mailtrap
-      - MAILTRAP_TOKEN=8aa3830ddaeaadd601afe16cae5da073      # Token do Mailtrap
-      - MAILTRAP_INBOX_ID=3365587                            # ID da caixa de entrada do Mailtrap
+      - MAILTRAP_ACCOUNT_ID=3463944                          # ID da conta do Mailtrap
+      - MAILTRAP_TOKEN=8e7a3a3d2fab23050ddc6dadefb9ec8d      # Token do Mailtrap
+      - MAILTRAP_INBOX_ID=3463944                            # ID da caixa de entrada do Mailtrap
       - TZ=America/Sao_Paulo                                 # Fuso horário
     restart: unless-stopped
 
@@ -109,6 +109,28 @@ services:
     ports:
       - "3000:3000"              # Mapeamento da porta do frontend
     restart: unless-stopped
+
+  # Serviço de Jenkins para integração contínua
+  jenkins:
+    build: ./jenkins                # Usa o Dockerfile padrão localizado na pasta ./jenkins
+    container_name: jenkins-server  # Define um nome amigável para o contêiner
+    privileged: true                # Concede permissões elevadas ao contêiner (necessário para Docker-in-Docker)
+    user: root                      # Executa o contêiner como usuário root para garantir permissões
+    networks:
+      - skynet                      # Conecta o Jenkins à rede Docker chamada 'skynet'
+    restart: always                 # Reinicia automaticamente o contêiner em caso de falha
+    environment:
+      - TZ=America/Sao_Paulo        # Define o fuso horário do contêiner para São Paulo
+    ports:
+      - "8080:8080"                 # Mapeia a porta 8080 do host para a interface web do Jenkins
+      - "50000:50000"               # Mapeia a porta para comunicação com agentes Jenkins
+    volumes:
+      - jenkins_home:/var/jenkins_home             # Persiste dados do Jenkins no volume 'jenkins_home'
+      - /var/run/docker.sock:/var/run/docker.sock  # Permite que o Jenkins use Docker do host
+
+# Volumes
+volumes:
+  jenkins_home:                 # Persistência de dados do Jenkins
 
 # Redes
 networks:

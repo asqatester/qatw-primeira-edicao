@@ -61,3 +61,19 @@ O projeto utiliza Docker Compose para gerenciar os serviços necessários para o
 
 ## 📄 Licença
 Este projeto está sob a licença MIT.
+
+Obs.: o padrão de projetos PAgeObjects é mais indicado para projetos médios grandes, com muitas páginas
+- para projetos pequenos pode se usar actions
+
+
+---------------
+banco: paybank-db
+senha: dba
+porta: 5432
+
+-------------
+
+interromper interface do playwright
+acessar site npmjs e buscar pela lib bullmq que é pra consumir o redis
+-instalar essa lib: npm i bullmq
+-abrir interface do playwright
